@@ -37,6 +37,7 @@ vim.pack.add({
 	"https://github.com/nvim-lua/plenary.nvim",
 	"https://github.com/stevearc/oil.nvim",
 	"https://github.com/nvim-telescope/telescope.nvim",
+	"https://github.com/neovim/nvim-lspconfig",
 })
 
 -- Plugins: setup
@@ -50,3 +51,14 @@ require("oil").setup({ view_options = { show_hidden = true } })
 vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
 vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live grep" })
+
+-- LSP: enable
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+			diagnostics = { globals = { "vim" } },
+		},
+	},
+})
+
+vim.lsp.enable("lua_ls")
