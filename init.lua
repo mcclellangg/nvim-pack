@@ -38,6 +38,8 @@ vim.pack.add({
 	"https://github.com/stevearc/oil.nvim",
 	"https://github.com/nvim-telescope/telescope.nvim",
 	"https://github.com/neovim/nvim-lspconfig",
+	"https://github.com/mason-org/mason.nvim",
+	"https://github.com/mason-org/mason-lspconfig.nvim",
 })
 
 -- Plugins: setup
@@ -47,12 +49,16 @@ vim.api.nvim_set_hl(0, "Comment", { fg = "#FF0000" })
 require("mini.icons").setup()
 require("mini.statusline").setup()
 require("oil").setup({ view_options = { show_hidden = true } })
+require("mason").setup()
+require("mason-lspconfig").setup({
+	ensure_installed = { "lua_ls", "html", "cssls", "ts_ls", "pyright" },
+})
 
 vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
 vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live grep" })
 
--- LSP: enable
+-- LSP: setup 
 vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
@@ -61,4 +67,3 @@ vim.lsp.config("lua_ls", {
 	},
 })
 
-vim.lsp.enable("lua_ls")
