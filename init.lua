@@ -1,5 +1,5 @@
 -- ═══════════════════════════════════════════════════════════════
--- Minimal nvim config with vim.pack()
+-- Minimal nvim config with vim.pack
 -- ═══════════════════════════════════════════════════════════════
 
 print("Using " .. (vim.env.NVIM_APPNAME or "default"))
@@ -104,10 +104,25 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- Plugins: keymaps
+-- Plugins: Oil keymaps
 vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
-vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
+
+-- Plugins: Telescope keymaps
+vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Find help" })
 vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live grep" })
+vim.keymap.set("n", "<leader>fd", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
+vim.keymap.set(
+	"n",
+	"<leader>en",
+	"<cmd>Telescope find_files cwd=" .. vim.fn.stdpath("config") .. "<cr>",
+	{ desc = "Edit Neovim config" }
+)
+vim.keymap.set(
+	"n",
+	"<leader>ep",
+	"<cmd>Telescope find_files cwd=" .. vim.fs.joinpath(vim.fn.stdpath("data"), "site", "pack", "core", "opt") .. "<cr>",
+	{ desc = "Edit Neovim packages" }
+)
 
 -- LSP: setup
 vim.lsp.config("lua_ls", {
