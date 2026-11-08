@@ -40,6 +40,8 @@ vim.pack.add({
 	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/mason-org/mason.nvim",
 	"https://github.com/mason-org/mason-lspconfig.nvim",
+	"https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
+	"https://github.com/stevearc/conform.nvim",
 })
 
 -- Plugins: setup
@@ -54,11 +56,27 @@ require("mason-lspconfig").setup({
 	ensure_installed = { "lua_ls", "html", "cssls", "ts_ls", "pyright" },
 })
 
+require("mason-tool-installer").setup({
+	ensure_installed = { "stylua", "ruff", "prettier" },
+})
+
+require("conform").setup({
+	formatters_by_ft = {
+		lua = { "stylua" },
+		python = { "ruff_format" },
+		javascript = { "prettier" },
+		typescript = { "prettier" },
+		html = { "prettier" },
+		css = { "prettier" },
+	},
+	format_on_save = { timeout_ms = 1000, lsp_format = "fallback" },
+})
+
 vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
 vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live grep" })
 
--- LSP: setup 
+-- LSP: setup
 vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
@@ -66,4 +84,3 @@ vim.lsp.config("lua_ls", {
 		},
 	},
 })
-
