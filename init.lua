@@ -58,7 +58,7 @@ vim.pack.add({
 })
 
 -- Plugins: setup
-vim.cmd.colorscheme("miniwinter")
+vim.cmd.colorscheme("miniautumn")
 vim.api.nvim_set_hl(0, "Comment", { fg = "#FF0000" })
 
 require("mini.icons").setup()
