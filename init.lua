@@ -11,7 +11,8 @@ vim.opt.clipboard = "unnamedplus"
 vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
 vim.keymap.set("n", "<leader>x", ":.lua<CR>")
 vim.keymap.set("v", "<leader>x", ":lua<CR>")
-vim.keymap.set("n", "<space>nh", "<cmd>noh<CR>")
+vim.keymap.set("n", "<leader>nh", "<cmd>noh<CR>")
+vim.keymap.set("n", "<leader>ss", "<cmd>set spell!<CR>")
 
 -- UI
 vim.opt.linebreak = true
