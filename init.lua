@@ -67,7 +67,7 @@ require("mini.statusline").setup()
 require("oil").setup({ view_options = { show_hidden = true } })
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "html", "cssls", "ts_ls", "pyright" },
+	ensure_installed = { "lua_ls", "html", "cssls", "ts_ls", "pyright", "yamlls" },
 })
 
 require("mason-tool-installer").setup({
@@ -111,6 +111,8 @@ vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 -- Plugins: Telescope keymaps
 vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Find help" })
 vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live grep" })
+vim.keymap.set("n", "<leader>gf", "<cmd>Telescope git_files<cr>", { desc = "Find git tracked files" })
+-- TODO: Convert to function to enable hidden
 vim.keymap.set("n", "<leader>fd", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
 vim.keymap.set(
 	"n",
