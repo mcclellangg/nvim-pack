@@ -112,8 +112,7 @@ vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Find help" })
 vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live grep" })
 vim.keymap.set("n", "<leader>gf", "<cmd>Telescope git_files<cr>", { desc = "Find git tracked files" })
--- TODO: Convert to function to enable hidden
-vim.keymap.set("n", "<leader>fd", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
+vim.keymap.set("n", "<leader>fd", "<cmd>Telescope find_files hidden=true<cr>", { desc = "Find files" })
 vim.keymap.set(
 	"n",
 	"<leader>en",
